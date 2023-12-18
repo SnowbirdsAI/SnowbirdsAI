@@ -1,0 +1,2 @@
+# SnowbirdsAI
+Snowbirds AI home
