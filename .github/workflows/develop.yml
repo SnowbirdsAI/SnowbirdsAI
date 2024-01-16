@@ -44,7 +44,7 @@ jobs:
     - name: Push develop to the develop branch
       run: |
         # Check the branch out
-        git checkout develop
+        git checkout -b develop
 
         # Force push the changes from the develop branch to the develop branch on target GitHub Repository
         git push origin_remote_dev develop:develop --force
