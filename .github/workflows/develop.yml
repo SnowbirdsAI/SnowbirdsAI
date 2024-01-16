@@ -17,26 +17,42 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      # Using a token specific to the operation, ensuring it has the minimum required permissions.
       with:
         token: ${{ secrets.GH_PAT }}
-        
-    # The 'git remote add' command allows the addition of a new remote end-point to the local repo.
-    - name: Add target GitHub remote
-      run: |
-        git remote add origin_remote_dev https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
+    
+    - name: Add Hugging Face Spaces remote
+      run: git remote add origin_remote_dev https://github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
 
-    # Setting up Git credentials globally can be avoided, but it's here for custom user configurations.
+    # - name: Add target GitHub remote
+    #   run: git remote add origin_remote_dev https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
+    
     - name: Set up Git credentials
       run: |
+        git config --global credential.helper store
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
+        git credential approve <<< "url=https://github.com/
+        username=${{ env.TARGET_GH_USERNAME }}
+        password=${{ env.TARGET_GH_TOKEN }}"
 
-    # Pushing changes to the remote branch with error handling.
     - name: Push develop to the develop branch
       run: |
-        set -e  # Any command which returns non-zero exit code will cause this shell script to exit immediately
-        # Checking out the develop branch, this step may be redundant but is kept for clarity.
+        # Check the branch out
         git checkout develop
-        # Push changes, avoiding force push for safety.
-        git push origin_remote_dev develop:develop
+
+        # Force push the changes from the develop branch to the develop branch on target GitHub Repository
+        git push origin_remote_dev develop:develop --force
+
+    # - name: Push release to the release branch
+    #   run: |
+    #     git checkout release
+
+    #     # Force push the changes from the release branch to the release branch on target GitHub Repository
+    #     git push origin_remote_dev release:release --force
+
+    # - name: Push main to the main branch
+    #   run: |
+    #     git checkout main
+
+    #     # Force push the changes from the main branch to the main branch on target GitHub Repository
+    #     git push origin_remote_dev main:main --force
