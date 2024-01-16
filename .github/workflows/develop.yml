@@ -31,7 +31,7 @@ jobs:
     
     # username=${{ env.TARGET_GH_USERNAME }}
     # password=${{ env.TARGET_GH_TOKEN }}
-    
+
     - name: Set up Git credentials
       run: |
         git config --global credential.helper store
@@ -39,7 +39,7 @@ jobs:
         git config --global user.name "GitHub Action"
         git credential approve <<< "url=https://github.com/
         username=SnowbirdsAiRnd
-        password=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"
+        password=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"
 
     - name: Push develop to the develop branch
       run: |
