@@ -22,9 +22,9 @@ jobs:
 
     - name: Push to Target Repository
       run: |
-        git remote add target https://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:x-oauth-basic@github.com/SnowbirdsAiRnd/SnowbirdsAI.git
+        git remote add target <access-token>:x-oauth-basic@github.com/SnowbirdsAiRnd/SnowbirdsAI.git
         git push target HEAD:develop
-        
+
 # name: Develop Workflow
 
 # on:
@@ -46,9 +46,6 @@ jobs:
 #       uses: actions/checkout@v2
 #       with:
 #         token: ${{ secrets.GH_PAT }}
-    
-#     - name: Add target GitHub remote
-#       run: git remote add origin_remote_dev https://github.com/SnowbirdsAiRnd/SnowbirdsAI.git
 
 #     # - name: Add target GitHub remote
 #     #   run: git remote add origin_remote_dev https://github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
@@ -56,8 +53,6 @@ jobs:
 #     # - name: Add target GitHub remote
 #     #   run: git remote add origin_remote_dev https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
     
-#     # username=${{ env.TARGET_GH_USERNAME }}
-#     # password=${{ env.TARGET_GH_TOKEN }}
 
 #     - name: Set up Git credentials
 #       run: |
@@ -65,8 +60,9 @@ jobs:
 #         git config --global user.email "action@github.com"
 #         git config --global user.name "GitHub Action"
 #         git credential approve <<< "url=https://github.com/
-#         username=SnowbirdsAiRnd
-#         password=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"
+          # username=${{ env.TARGET_GH_USERNAME }}
+          # password=${{ env.TARGET_GH_TOKEN }}"
+
 
 #     - name: Push develop to the develop branch
 #       run: |
