@@ -35,21 +35,21 @@ jobs:
     - name: Push develop to the develop branch
       run: |
         # Check the branch out
-        git checkout develop
+        git checkout -b develop
 
         # Force push the changes from the develop branch to the develop branch on target GitHub Repository
         git push origin_remote_qa develop:develop --force
 
     - name: Push release to the release branch
       run: |
-        git checkout release
+        git checkout -b release
 
         # Force push the changes from the release branch to the release branch on target GitHub Repository
         git push origin_remote_qa release:release --force
 
     - name: Push main to the main branch
       run: |
-        git checkout main
+        git checkout -b main
 
         # Force push the changes from the main branch to the main branch on target GitHub Repository
         git push origin_remote_qa main:main --force
