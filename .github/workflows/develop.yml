@@ -32,24 +32,24 @@ jobs:
         username=${{ env.TARGET_GH_USERNAME }}
         password=${{ env.TARGET_GH_TOKEN }}"
 
-    - name: Push develop to the develop branch
-      run: |
-        # Check the branch out
-        git checkout develop
+    # - name: Push develop to the develop branch
+    #   run: |
+    #     # Check the branch out
+    #     git checkout develop
 
-        # Force push the changes from the develop branch to the develop branch on target GitHub Repository
-        git push origin_remote_dev develop:develop --force
+    #     # Force push the changes from the develop branch to the develop branch on target GitHub Repository
+    #     git push origin_remote_dev develop:develop --force
 
-    - name: Push release to the release branch
-      run: |
-        git checkout release
+    # - name: Push release to the release branch
+    #   run: |
+    #     git checkout release
 
-        # Force push the changes from the release branch to the release branch on target GitHub Repository
-        git push origin_remote_dev release:release --force
+    #     # Force push the changes from the release branch to the release branch on target GitHub Repository
+    #     git push origin_remote_dev release:release --force
 
-    - name: Push main to the main branch
-      run: |
-        git checkout main
+    # - name: Push main to the main branch
+    #   run: |
+    #     git checkout main
 
-        # Force push the changes from the main branch to the main branch on target GitHub Repository
-        git push origin_remote_dev main:main --force
+    #     # Force push the changes from the main branch to the main branch on target GitHub Repository
+    #     git push origin_remote_dev main:main --force
