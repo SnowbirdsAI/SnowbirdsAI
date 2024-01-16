@@ -20,8 +20,11 @@ jobs:
       with:
         token: ${{ secrets.GH_PAT }}
     
-    - name: Add Hugging Face Spaces remote
-      run: git remote add origin_remote_dev https://github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
+    - name: Add target GitHub remote
+      run: git remote add origin_remote_dev https://github.com/SnowbirdsAiRnd/SnowbirdsAI.git
+
+    # - name: Add target GitHub remote
+    #   run: git remote add origin_remote_dev https://github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
 
     # - name: Add target GitHub remote
     #   run: git remote add origin_remote_dev https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
@@ -32,8 +35,10 @@ jobs:
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
         git credential approve <<< "url=https://github.com/
-        username=${{ env.TARGET_GH_USERNAME }}
-        password=${{ env.TARGET_GH_TOKEN }}"
+        # username=${{ env.TARGET_GH_USERNAME }}
+        # password=${{ env.TARGET_GH_TOKEN }}
+        username=SnowbirdsAiRnd
+        password=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
 
     - name: Push develop to the develop branch
       run: |
