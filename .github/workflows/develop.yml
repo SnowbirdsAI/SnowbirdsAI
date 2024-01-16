@@ -1,68 +1,95 @@
-name: Develop Workflow
+name: Manual Push to Another Repository
 
 on:
   push:
     branches:
       - develop
 
-env:
-  REPOSITORY_NAME: SnowbirdsAI
-  TARGET_GH_USERNAME: ${{ secrets.DEV_TARGET_GH_USERNAME }}
-  TARGET_GH_TOKEN: ${{ secrets.DEV_TARGET_GH_TOKEN }}
-  
 jobs:
-  Deploy-develop:
+  push:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout Source Repository
       uses: actions/checkout@v2
       with:
-        token: ${{ secrets.GH_PAT }}
-    
-    - name: Add target GitHub remote
-      run: git remote add origin_remote_dev https://github.com/SnowbirdsAiRnd/SnowbirdsAI.git
+        ref: 'develop'
 
-    # - name: Add target GitHub remote
-    #   run: git remote add origin_remote_dev https://github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
-
-    # - name: Add target GitHub remote
-    #   run: git remote add origin_remote_dev https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
-    
-    # username=${{ env.TARGET_GH_USERNAME }}
-    # password=${{ env.TARGET_GH_TOKEN }}
-
-    - name: Set up Git credentials
+    - name: Setup Git Config
       run: |
-        git config --global credential.helper store
-        git config --global user.email "action@github.com"
-        git config --global user.name "GitHub Action"
-        git credential approve <<< "url=https://github.com/
-        username=SnowbirdsAiRnd
-        password=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"
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
 
-    - name: Push develop to the develop branch
+    - name: Push to Target Repository
       run: |
-        # Check if the branch exists, and check it out. If not, create it.
-        if git rev-parse --verify develop; then
-            git checkout develop
-        else
-            git checkout -b develop
-        fi
+        git remote add target https://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:x-oauth-basic@github.com/SnowbirdsAiRnd/SnowbirdsAI.git
+        git push target HEAD:develop
+        
+# name: Develop Workflow
 
-        # Force push the changes from the develop branch to the develop branch on target GitHub Repository
-        git push origin_remote_dev develop:develop --force
+# on:
+#   push:
+#     branches:
+#       - develop
 
-    # - name: Push release to the release branch
-    #   run: |
-    #     git checkout release
+# env:
+#   REPOSITORY_NAME: SnowbirdsAI
+#   TARGET_GH_USERNAME: ${{ secrets.DEV_TARGET_GH_USERNAME }}
+#   TARGET_GH_TOKEN: ${{ secrets.DEV_TARGET_GH_TOKEN }}
+  
+# jobs:
+#   Deploy-develop:
+#     runs-on: ubuntu-latest
 
-    #     # Force push the changes from the release branch to the release branch on target GitHub Repository
-    #     git push origin_remote_dev release:release --force
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v2
+#       with:
+#         token: ${{ secrets.GH_PAT }}
+    
+#     - name: Add target GitHub remote
+#       run: git remote add origin_remote_dev https://github.com/SnowbirdsAiRnd/SnowbirdsAI.git
 
-    # - name: Push main to the main branch
-    #   run: |
-    #     git checkout main
+#     # - name: Add target GitHub remote
+#     #   run: git remote add origin_remote_dev https://github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
 
-    #     # Force push the changes from the main branch to the main branch on target GitHub Repository
-    #     git push origin_remote_dev main:main --force
+#     # - name: Add target GitHub remote
+#     #   run: git remote add origin_remote_dev https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
+    
+#     # username=${{ env.TARGET_GH_USERNAME }}
+#     # password=${{ env.TARGET_GH_TOKEN }}
+
+#     - name: Set up Git credentials
+#       run: |
+#         git config --global credential.helper store
+#         git config --global user.email "action@github.com"
+#         git config --global user.name "GitHub Action"
+#         git credential approve <<< "url=https://github.com/
+#         username=SnowbirdsAiRnd
+#         password=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"
+
+#     - name: Push develop to the develop branch
+#       run: |
+#         # Check if the branch exists, and check it out. If not, create it.
+#         if git rev-parse --verify develop; then
+#             git checkout develop
+#         else
+#             git checkout -b develop
+#         fi
+
+#         # Force push the changes from the develop branch to the develop branch on target GitHub Repository
+#         git push origin_remote_dev develop:develop --force
+
+#     # - name: Push release to the release branch
+#     #   run: |
+#     #     git checkout release
+
+#     #     # Force push the changes from the release branch to the release branch on target GitHub Repository
+#     #     git push origin_remote_dev release:release --force
+
+#     # - name: Push main to the main branch
+#     #   run: |
+#     #     git checkout main
+
+#     #     # Force push the changes from the main branch to the main branch on target GitHub Repository
+#     #     git push origin_remote_dev main:main --force
