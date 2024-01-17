@@ -1,4 +1,4 @@
-name: Release Workflow
+name: Develop Workflow
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - release
 
 env:
-  REPOSITORY_NAME: SnowbirdsAI
+  REPOSITORY_NAME: SnowbirdsAI.git
   TARGET_GH_USERNAME: ${{ secrets.QA_TARGET_GH_USERNAME }}
   TARGET_GH_TOKEN: ${{ secrets.QA_TARGET_GH_TOKEN }}
   
@@ -19,37 +19,21 @@ jobs:
       uses: actions/checkout@v2
       with:
         token: ${{ secrets.GH_PAT }}
-        
-    - name: Add target GitHub remote
-      run: git remote add origin_remote_qa https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
 
+    - name: Add target GitHub remote
+      run: |
+        git remote add target https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}
+    
     - name: Set up Git credentials
       run: |
         git config --global credential.helper store
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
         git credential approve <<< "url=https://github.com/
-        username=${{ env.TARGET_GH_USERNAME }}
-        password=${{ env.TARGET_GH_TOKEN }}"
-
-    - name: Push develop to the develop branch
-      run: |
-        # Check the branch out
-        git checkout -b develop
-
-        # Force push the changes from the develop branch to the develop branch on target GitHub Repository
-        git push origin_remote_qa develop:develop --force
+          username=${{ env.TARGET_GH_USERNAME }}
+          password=${{ env.TARGET_GH_TOKEN }}"
 
     - name: Push release to the release branch
       run: |
-        git checkout -b release
-
         # Force push the changes from the release branch to the release branch on target GitHub Repository
-        git push origin_remote_qa release:release --force
-
-    - name: Push main to the main branch
-      run: |
-        git checkout -b main
-
-        # Force push the changes from the main branch to the main branch on target GitHub Repository
-        git push origin_remote_qa main:main --force
+        git push target release:release --force
