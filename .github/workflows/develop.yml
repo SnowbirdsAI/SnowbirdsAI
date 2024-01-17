@@ -34,7 +34,7 @@ on:
       - develop
 
 env:
-  REPOSITORY_NAME: SnowbirdsAI
+  REPOSITORY_NAME: SnowbirdsAI.git
   TARGET_GH_USERNAME: ${{ secrets.DEV_TARGET_GH_USERNAME }}
   TARGET_GH_TOKEN: ${{ secrets.DEV_TARGET_GH_TOKEN }}
   
@@ -49,7 +49,8 @@ jobs:
         token: ${{ secrets.GH_PAT }}
 
     - name: Add target GitHub remote
-      run: git remote add target https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}.git
+      run: |
+        git remote add target https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}
     
 
     - name: Set up Git credentials
