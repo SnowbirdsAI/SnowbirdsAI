@@ -65,26 +65,5 @@ jobs:
 
     - name: Push develop to the develop branch
       run: |
-        # Check if the branch exists, and check it out. If not, create it.
-        if git rev-parse --verify develop; then
-            git checkout develop
-        else
-            git checkout -b develop
-        fi
-
         # Force push the changes from the develop branch to the develop branch on target GitHub Repository
-        git push target develop:develop --force
-
-    # - name: Push release to the release branch
-    #   run: |
-    #     git checkout release
-
-    #     # Force push the changes from the release branch to the release branch on target GitHub Repository
-    #     git push target release:release --force
-
-    # - name: Push main to the main branch
-    #   run: |
-    #     git checkout main
-
-    #     # Force push the changes from the main branch to the main branch on target GitHub Repository
-    #     git push target main:main --force
+        git push target develop:main --force
