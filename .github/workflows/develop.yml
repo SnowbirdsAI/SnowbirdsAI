@@ -1,31 +1,3 @@
-# name: Manual Push to Another Repository
-
-# on:
-#   push:
-#     branches:
-#       - develop
-
-# jobs:
-#   push:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#     - name: Checkout Source Repository
-#       uses: actions/checkout@v2
-#       with:
-#         token: ${{ secrets.GH_PAT }}
-#         ref: 'develop'
-
-#     - name: Setup Git Config
-#       run: |
-#         git config --global user.name 'GitHub Action'
-#         git config --global user.email 'action@github.com'
-
-#     - name: Push to Target Repository
-#       run: |
-#         run: git remote add target https://oauth2:${{ secrets.DEV_TARGET_GH_TOKEN }}@github.com/${{ secrets.DEV_TARGET_GH_USERNAME }}/SnowbirdsAI.git
-#         git push target HEAD:develop
-
 name: Develop Workflow
 
 on:
