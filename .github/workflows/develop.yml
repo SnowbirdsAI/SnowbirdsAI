@@ -13,6 +13,7 @@ jobs:
     - name: Checkout Source Repository
       uses: actions/checkout@v2
       with:
+        token: ${{ secrets.GH_PAT }}
         ref: 'develop'
 
     - name: Setup Git Config
@@ -22,7 +23,7 @@ jobs:
 
     - name: Push to Target Repository
       run: |
-        git remote add target <access-token>:x-oauth-basic@github.com/SnowbirdsAiRnd/SnowbirdsAI.git
+        run: git remote add target https://oauth2:${{ secrets.DEV_TARGET_GH_TOKEN }}@github.com/${{ secrets.DEV_TARGET_GH_USERNAME }}/SnowbirdsAI.git
         git push target HEAD:develop
 
 # name: Develop Workflow
