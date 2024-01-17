@@ -23,8 +23,9 @@ jobs:
     - name: Add target GitHub remote
       run: |
         # git remote add target https://oauth2:${{ env.TARGET_GH_TOKEN }}@github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }}
-        # git remote add target https://github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }} 
-        git clone https://github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }} 
+        git remote add target https://github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }} 
+        git push target release:release --force
+        # git clone https://github.com/${{ env.TARGET_GH_USERNAME }}/${{ env.REPOSITORY_NAME }} 
     # - name: Set up Git credentials
     #   run: |
     #     git config --global credential.helper store
