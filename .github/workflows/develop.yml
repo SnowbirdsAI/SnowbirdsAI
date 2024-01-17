@@ -66,4 +66,4 @@ jobs:
     - name: Push develop to the develop branch
       run: |
         # Force push the changes from the develop branch to the develop branch on target GitHub Repository
-        git push target develop:main --force
+        git push target develop:develop --force
