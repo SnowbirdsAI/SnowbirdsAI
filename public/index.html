@@ -38,7 +38,7 @@
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
     <style>
-      body, html {
+      html, body {
           height: 100%;
           margin: 0;
           color: white;
@@ -47,6 +47,20 @@
           justify-content: center;
           align-items: center;
           text-align: center;
+      }
+
+      body {
+        display: flex; /* Enable flexbox layout */
+        flex-direction: column; /* Stack elements vertically */
+        background-color: #1a1a2e;
+        color: #e7e7de;
+      }
+
+      main.container {
+        flex: 1; /* Allows the main content to expand and fill the available space */
+        display: flex; /* Enables flexbox for main to support content alignment */
+        flex-direction: column; /* Stack children of main vertically */
+        overflow: auto; /* Adds scroll to main content if it overflows */
       }
 
       .overlay {
@@ -147,7 +161,7 @@
       footer.container nav ul li a:hover {
         color: #0056b3; /* Link color on hover, can be changed as needed */
       }
-      
+
   </style>
   </head>
   <body>
