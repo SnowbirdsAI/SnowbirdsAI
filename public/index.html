@@ -102,7 +102,7 @@
           color: white;
       }
 
-      footer {
+      /* footer {
           position: absolute;
           bottom: 0;
           width: 100%;
@@ -112,7 +112,42 @@
 
       footer small {
           color: white;
+      } */
+      
+      footer.container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f0f0; /* Example background color, can be changed as needed */
+        color: #333; /* Example text color, can be changed as needed */
+        font-size: 0.875rem; /* Adjusts small text size */
       }
+
+      footer.container nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0; /* Adjusts space between copyright text and links */
+        display: flex;
+        gap: 20px; /* Adjusts space between items */
+      }
+
+      footer.container nav ul li {
+        padding: 0;
+      }
+
+      footer.container nav ul li a {
+        text-decoration: none;
+        color: #007bff; /* Link color, can be changed as needed */
+        transition: color 0.3s ease; /* Transition for hover effect */
+      }
+
+      footer.container nav ul li a:hover {
+        color: #0056b3; /* Link color on hover, can be changed as needed */
+      }
+      
   </style>
   </head>
   <body>
@@ -129,8 +164,15 @@
             <a href="mailto:contact@snowbirdsai.com">Get in touch</a>
         </div>
     </main>
-    <footer>
-      <small>Copyright © 2024 - Snowbirds Ai</small>
+    <footer class="container">
+      <small>Copyright &copy; 2024 - Snowbirds Ai</small>
+      <nav>
+        <ul>
+          <li><a href="mailto:support@snowbirdsai.com" target="_self">Service Support</a></li>
+          <li><a href="https://www.snowbirdsai.com/policies/TermsOfUse.html">Terms of Use</a></li>
+          <li><a href="https://www.snowbirdsai.com/policies/PrivacyPolicy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
     </footer>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
