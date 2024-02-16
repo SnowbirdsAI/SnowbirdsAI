@@ -116,6 +116,17 @@
           color: white;
       }
 
+      #ai-animation-bg {
+          position: fixed; /* Ensure background covers the whole screen */
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -2; /* Ensure it stays behind all content */
+          background: url('/images/ai-futuristic-cityscape.webp') no-repeat center center fixed; 
+          background-size: cover; /* Ensure background covers the entire area */
+      }
+
       /* footer {
           position: absolute;
           bottom: 0;
@@ -177,14 +188,15 @@
             <!-- Removed 'Read our blog' button -->
             <a href="mailto:contact@snowbirdsai.com">Get in touch</a>
         </div>
+        <div id="ai-animation-bg"></div>
     </main>
     <footer class="container">
       <small>Copyright &copy; 2024 - Snowbirds Ai</small>
       <nav>
         <ul>
           <li><a href="mailto:contact@snowbirdsai.com" target="_self">Contact</a></li>
-          <li><a href="https://www.snowbirdsai.com/policies/TermsOfUse.html">Terms of Use</a></li>
-          <li><a href="https://www.snowbirdsai.com/policies/PrivacyPolicy.html">Privacy Policy</a></li>
+          <li><a href="/policies/TermsOfUse.html">Terms of Use</a></li>
+          <li><a href="/policies/PrivacyPolicy.html">Privacy Policy</a></li>
         </ul>
       </nav>
     </footer>
