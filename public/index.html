@@ -38,29 +38,24 @@
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
     <style>
-      html, body {
-          height: 100%;
-          margin: 0;
-          color: white;
-          background: #0161A3;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-      }
-
       body {
-        display: flex; /* Enable flexbox layout */
-        flex-direction: column; /* Stack elements vertically */
         background-color: #1a1a2e;
         color: #e7e7de;
       }
 
-      main.container {
-        flex: 1; /* Allows the main content to expand and fill the available space */
-        display: flex; /* Enables flexbox for main to support content alignment */
-        flex-direction: column; /* Stack children of main vertically */
-        overflow: auto; /* Adds scroll to main content if it overflows */
+      .top-header {
+        text-align: center;
+      }
+      
+      .container {
+        max-width: 960px;
+        margin: auto;
+        padding: 2rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-gap: 2rem;
       }
 
       .overlay {
@@ -87,6 +82,13 @@
           font-size: 1.5rem;
           margin-bottom: 30px;
           color:bisque
+      }
+
+      .service-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 50px;
       }
 
       .button-group a {
@@ -116,26 +118,24 @@
           color: white;
       }
 
-      .image-container {
-          margin-top: 20px;
-          width: 100%;
-          height: 500px;
-          background-image: url('/images/ai-futuristic-cityscape.webp');
-          background-size: cover;
-          background-position: center;
+      .main-blueprint-graphic-container {
+        margin-top: 20px;
+        width: 100%;
+        height: 500px;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        text-align: center;
       }
 
-      /* footer {
-          position: absolute;
-          bottom: 0;
-          width: 100%;
-          text-align: center;
-          margin-bottom: 20px;
+      .main-service-graphic-container {
+        margin-top: 20px;
+        width: 100%;
+        height: 500px;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
       }
-
-      footer small {
-          color: white;
-      } */
       
       footer.container {
         display: flex;
@@ -176,17 +176,29 @@
   <body>
     <div class="overlay"></div>
     <main class="container">
-        <hgroup>
-            <h2>Snowbirds Ai</h2>
-            <p>Transforming Everyday Life with AI: Discover our smart applications that enrich your life.</p>
-            <p>Dream it, achieve it with technology!</p>
-        </hgroup>
-        <div class="button-group">
-            <a href="https://langspur.snowbirdsai.com">See our services</a>
-            <!-- Removed 'Read our blog' button -->
-            <a href="mailto:contact@snowbirdsai.com">Get in touch</a>
-        </div>
-        <div class="image-container"></div>
+      <div class="grid">
+        <section>
+          <hgroup class="top-header">
+              <h2>Snowbirds Ai</h2>
+              <p>Transforming Everyday Life with AI</p>
+              <p>Discover our smart applications that enrich your life.</p>
+          </hgroup>
+          <div class="service-button">
+            <div class="button-group">
+              <a href="https://langspur.snowbirdsai.com">See our services</a>
+              <!-- Removed 'Read our blog' button -->
+              <a href="mailto:contact@snowbirdsai.com">Get in touch</a>
+            </div>
+          </div>
+          <div class="main-service-graphic-container">
+            <img src="./images/LangSpur-FeatureGraphic3.png" alt="Main Service Graphic">
+          </div>
+          <div class="main-blueprint-graphic-container">
+            <p>Dream it, achieve it with Ai technology!</p>
+            <img src="./images/ai-futuristic-cityscape.webp" alt="Main Blueprint Graphic">
+          </div>
+        </section>
+      </div>
     </main>
     <footer class="container">
       <small>Copyright &copy; 2024 - Snowbirds Ai</small>
