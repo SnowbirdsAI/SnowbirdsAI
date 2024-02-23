@@ -43,7 +43,15 @@
         color: #e7e7de;
       }
 
-      .top-header {
+      .top-header-company h2 {
+        text-align: center;
+        color: #e7e7de;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .top-header-intro {
         text-align: center;
       }
       
@@ -70,12 +78,6 @@
 
       main {
           z-index: 1;
-      }
-
-      h2 {
-          font-size: 2rem;
-          font-weight: bold;
-          margin-bottom: 20px;
       }
 
       p {
@@ -178,10 +180,12 @@
     <main class="container">
       <div class="grid">
         <section>
-          <hgroup class="top-header">
-              <h2>Snowbirds Ai</h2>
-              <p>Transforming Everyday Life with AI</p>
-              <p>Discover our smart applications that enrich your life.</p>
+          <div class="top-header-company">
+            <h2>Snowbirds Ai</h2>
+          </div>
+          <hgroup class="top-header-intro">
+            <p>Transforming Everyday Life with AI</p>
+            <p>Discover our smart applications that enrich your life.</p>
           </hgroup>
           <div class="service-button">
             <div class="button-group">
